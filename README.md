@@ -23,9 +23,26 @@ O código será organizado em camadas e pacotes:
 - `exception`: erros e respostas de erro
 - `config`: configurações da aplicação
 
+## Modelo do domínio
+
+- `Item` registra um objeto perdido ou encontrado e guarda a data da ocorrência, dados para contato, status, categoria e local.
+- `Categoria` classifica itens, como documentos, eletrônicos ou acessórios.
+- `Local` representa o lugar da ocorrência, com nome, detalhes, cidade e estado.
+- Cada `Item` pertence a uma `Categoria` e a um `Local`.
+
+O status começa como `ABERTO`. O fluxo permitido é `ABERTO` para `EM_CONTATO` ou `CANCELADO`; `EM_CONTATO` pode ir para `RESOLVIDO` ou `CANCELADO`. `RESOLVIDO` e `CANCELADO` são estados finais. A data da ocorrência não pode estar no futuro. Nomes de categoria não podem se repetir, e categorias ou locais associados a itens não podem ser excluídos.
+
 ## Situação atual
 
-Projeto inicial gerado pelo Spring Initializr. A estrutura de pacotes está preparada; a modelagem do domínio, os endpoints, as regras de negócio, a configuração do banco e a documentação OpenAPI serão implementados nas próximas etapas.
+Projeto inicial gerado pelo Spring Initializr. A estrutura, o domínio, os repositórios, DTOs, serviços e controllers estão implementados. A configuração do banco e a documentação OpenAPI ainda precisam ser concluídas.
+
+## Endpoints disponíveis
+
+- `/api/itens`: listar, buscar por ID, cadastrar, atualizar, alterar status e excluir itens.
+- `/api/categorias`: listar, buscar por ID, cadastrar, atualizar e excluir categorias.
+- `/api/locais`: listar, buscar por ID, cadastrar, atualizar e excluir locais.
+
+Os cadastros retornam `201 Created` com o endereço do recurso criado. Exclusões retornam `204 No Content`. Erros de validação retornam `400`, recursos inexistentes `404` e conflitos de regra de negócio `409`.
 
 ## Requisitos da atividade
 
