@@ -34,7 +34,7 @@ O status começa como `ABERTO`. O fluxo permitido é `ABERTO` para `EM_CONTATO` 
 
 ## Situação atual
 
-Projeto inicial gerado pelo Spring Initializr. A estrutura, o domínio, os repositórios, DTOs, serviços e controllers estão implementados. A configuração do banco e a documentação OpenAPI ainda precisam ser concluídas.
+Projeto inicial gerado pelo Spring Initializr. A estrutura, o domínio, os repositórios, DTOs, serviços, controllers e documentação OpenAPI estão implementados. A conexão local com PostgreSQL está configurada por variáveis de ambiente.
 
 ## Endpoints disponíveis
 
@@ -43,6 +43,10 @@ Projeto inicial gerado pelo Spring Initializr. A estrutura, o domínio, os repos
 - `/api/locais`: listar, buscar por ID, cadastrar, atualizar e excluir locais.
 
 Os cadastros retornam `201 Created` com o endereço do recurso criado. Exclusões retornam `204 No Content`. Erros de validação retornam `400`, recursos inexistentes `404` e conflitos de regra de negócio `409`.
+
+## Swagger / OpenAPI
+
+Com a aplicação em execução, acesse `http://localhost:8080/swagger-ui.html` para consultar e experimentar os endpoints. A especificação OpenAPI em JSON fica em `http://localhost:8080/v3/api-docs`.
 
 ## Requisitos da atividade
 
